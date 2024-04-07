@@ -19,7 +19,7 @@ import retrofit2.http.Query
 interface CocktailsApi {
 
     @GET("/search.php")
-    suspend fun getCocktailsByFirstLetter(@Query("f") letterSearch: String): ApiResponse<List<CocktailDTO>>
+    suspend fun getCocktailsByFirstLetter(@Query("f") letterSearch: String): Result<ApiResponse<CocktailDTO>>
 
     @GET("/search.php")
     suspend fun getIngredientByIngredientsName(@Query("i") ingredientNameSearch: String): IngredientsResponse<List<IngredientDetailedDTO>>

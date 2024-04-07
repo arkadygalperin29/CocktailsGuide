@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "dev.agalperin.navigation"
+    namespace = "dev.agalperin.data"
     compileSdk = 34
 
     defaultConfig {
@@ -33,9 +33,11 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.javax.inject)
 
-    implementation(libs.bundles.voyager.all)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    implementation(project(":database"))
+    implementation(project(":network"))
+    implementation(project(":core"))
 }

@@ -73,6 +73,8 @@ dependencies {
 
     implementation(project(":network"))
     implementation(project(":uikit"))
+    implementation(project(":core"))
     implementation(project(":database"))
     implementation(project(":navigation"))
+    implementation(project(":features:cocktails-main"))
 }

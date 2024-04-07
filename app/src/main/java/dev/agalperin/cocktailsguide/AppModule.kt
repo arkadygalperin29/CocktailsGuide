@@ -6,6 +6,9 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import dev.agalperin.core.AndroidLogcatLogger
+import dev.agalperin.core.AppDispatchers
+import dev.agalperin.core.Logger
 import dev.agalperin.database.database.CocktailDatabase
 import dev.agalperin.network.CocktailsApi
 import javax.inject.Singleton
@@ -28,5 +31,17 @@ object AppModule {
     @Singleton
     fun provideCocktailDatabase(@ApplicationContext context: Context): CocktailDatabase  {
         return CocktailDatabase(context)
+    }
+
+    @Provides
+    @Singleton
+    fun provideAppCoroutinesDispatchers(): AppDispatchers {
+        return AppDispatchers()
+    }
+
+    @Provides
+    @Singleton
+    fun provideAppLogger(): Logger {
+        return AndroidLogcatLogger()
     }
 }
