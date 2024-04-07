@@ -9,6 +9,6 @@ data class IngredientDTO(
     @SerialName("strIngredient1")
     val ingredientName: String,
     @DrawableRes
-    val image: Int? = null,
-    val description: String? = null
+    val image: Int,
+    val description: String
 )

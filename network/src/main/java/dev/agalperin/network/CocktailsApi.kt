@@ -18,34 +18,30 @@ import retrofit2.http.Query
 
 interface CocktailsApi {
 
-    @GET("api/json/v1/1/search.php")
+    @GET("/search.php")
     suspend fun getCocktailsByFirstLetter(@Query("f") letterSearch: String): ApiResponse<List<CocktailDTO>>
 
-    @GET("api/json/v1/1/search.php")
+    @GET("/search.php")
     suspend fun getIngredientByIngredientsName(@Query("i") ingredientNameSearch: String): IngredientsResponse<List<IngredientDetailedDTO>>
 
-    @GET("api/json/v1/1/lookup.php")
-    suspend fun getIngredientBySearch(@Query("iid") searchQuery: String): IngredientsResponse<List<IngredientDetailedDTO>>
-
     //list all cocktails by first letter www.thecocktaildb.com/api/json/v1/1/search.php?f=a
-    @GET("api/json/v1/1/filter.php?a=Alcoholic")
+    @GET("/filter.php?a=Alcoholic")
     suspend fun getCocktailsWithAlcohol(): ApiResponse<List<CocktailDTO>>
 
-    @GET("api/json/v1/1/filter.php?a=Non_Alcoholic")
+    @GET("/filter.php?a=Non_Alcoholic")
     suspend fun getNonAlcoholicCocktails(): ApiResponse<List<CocktailDTO>>
 
-    @GET("api/json/v1/1/lookup.php")
+    @GET("/lookup.php")
     suspend fun getCocktailById(@Query("i") cocktailId: String): ApiResponse<List<CocktailDTO>>
 
-    @GET("api/json/v1/1/list.php?g=list")
+    @GET("/list.php?g=list")
     suspend fun getAllKindsOfGlasses(): ApiResponse<List<GlassDTO>>
 
-    @GET("api/json/v1/1/list.php?i=list")
+    @GET("/list.php?i=list")
     suspend fun getIngredientsList(): ApiResponse<List<IngredientDTO>>
 
-    @GET("api/json/v1/1/lookup.php")
+    @GET("/lookup.php")
     suspend fun getIngredientById(@Query("iid") ingredientId: String): IngredientsResponse<List<IngredientDetailedDTO>>
-
 }
 
 

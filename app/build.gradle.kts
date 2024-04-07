@@ -22,7 +22,7 @@ android {
         }
 
 
-        buildConfigField("String", "COCKTAILS_API_KEY", "\"1/\"")
+        buildConfigField("String", "COCKTAILS_API_KEY", "\"1\"")
         buildConfigField("String", "COCKTAILS_API_BASE_URL", "\"https://www.thecocktaildb.com/api/json/v1/\"")
     }
 
@@ -72,4 +72,7 @@ dependencies {
     kapt(libs.dagger.hilt.compiler)
 
     implementation(project(":network"))
+    implementation(project(":uikit"))
+    implementation(project(":database"))
+    implementation(project(":navigation"))
 }

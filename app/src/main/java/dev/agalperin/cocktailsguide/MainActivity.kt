@@ -11,16 +11,17 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import dagger.hilt.android.AndroidEntryPoint
-import dev.agalperin.cocktailsguide.ui.theme.CocktailsGuideTheme
+import dev.agalperin.uikit.scaffold.CocktailsScaffold
+import dev.agalperin.uikit.theme.CocktailsGuideTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+
         setContent {
             CocktailsGuideTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                CocktailsScaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
                         name = "Android",
                         modifier = Modifier.padding(innerPadding)

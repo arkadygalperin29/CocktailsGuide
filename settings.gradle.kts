@@ -22,3 +22,6 @@ dependencyResolutionManagement {
 rootProject.name = "Cocktails Guide"
 include(":app")
 include(":network")
+include(":uikit")
+include(":database")
+include(":navigation")
