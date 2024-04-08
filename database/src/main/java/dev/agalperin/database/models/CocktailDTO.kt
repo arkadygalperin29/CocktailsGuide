@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "cocktails")
 data class CocktailDBO(
     @PrimaryKey
-    val id: String = "1",
+    @ColumnInfo("id") val id: String = "1",
     @ColumnInfo("name") val name: String? = null,
     @ColumnInfo("category") val category: String? = null,
     @ColumnInfo("alcoholic") val alcoholic: String? = null,

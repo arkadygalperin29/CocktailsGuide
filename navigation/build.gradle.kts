@@ -34,7 +34,7 @@ android {
 
 dependencies {
 
-    implementation(libs.bundles.voyager.all)
+    api(libs.bundles.voyager.all)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

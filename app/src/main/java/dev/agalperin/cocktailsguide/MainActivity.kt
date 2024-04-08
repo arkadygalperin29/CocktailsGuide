@@ -10,7 +10,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import cafe.adriel.voyager.navigator.Navigator
 import dagger.hilt.android.AndroidEntryPoint
+import dev.agalperin.cocktails_main.CocktailsMainScreen
 import dev.agalperin.uikit.scaffold.CocktailsScaffold
 import dev.agalperin.uikit.theme.CocktailsGuideTheme
 
@@ -21,12 +23,13 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             CocktailsGuideTheme {
-                CocktailsScaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                Navigator(screen = CocktailsMainScreen())
+//                CocktailsScaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+//                    Greeting(
+//                        name = "Android",
+//                        modifier = Modifier.padding(innerPadding)
+//                    )
+//                }
             }
         }
     }
