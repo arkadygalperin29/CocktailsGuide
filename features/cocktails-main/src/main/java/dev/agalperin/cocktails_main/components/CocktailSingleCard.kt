@@ -34,7 +34,8 @@ fun CocktailSingleCard(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(150.dp)
+            .background(color = Black1)
+            .height(200.dp)
             .clip(shape = RoundedCornerShape(16.dp))
             .border(2.dp, Black1, RoundedCornerShape(16.dp))
             .clickable {

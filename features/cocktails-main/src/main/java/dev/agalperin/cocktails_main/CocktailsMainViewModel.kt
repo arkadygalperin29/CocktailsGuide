@@ -5,26 +5,34 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.agalperin.cocktails_main.models.UiCocktailMain
 import dev.agalperin.data.RequestResult
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 import javax.inject.Provider
 
+@OptIn(ExperimentalCoroutinesApi::class)
 @HiltViewModel
 internal class CocktailsMainViewModel @Inject constructor(
-    getAllArticlesUseCase: Provider<GetAllCocktailsByQueryUsecase>
+    private val getAllCocktailsByQueryUsecase: Provider<GetAllCocktailsByQueryUsecase>
 ) : ViewModel() {
 
-    companion object {
-        const val INITIAL_SEARCH_QUERY = "a"
+    private val _searchQueryState = MutableStateFlow("a")
+
+    fun setSearchQuery(query: String) {
+       _searchQueryState.value = query
     }
 
-    val state: StateFlow<State> = getAllArticlesUseCase.get().invoke(query = INITIAL_SEARCH_QUERY)
-        .map { it.toState() }
-        .stateIn(viewModelScope, SharingStarted.Lazily, State.None)
-
+    val state: StateFlow<State> = _searchQueryState.flatMapLatest { query ->
+        getAllCocktailsByQueryUsecase.get().invoke(query)
+            .map { it.toState() }
+    }.stateIn(viewModelScope, SharingStarted.Lazily, State.None)
 }
 
 

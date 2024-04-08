@@ -9,7 +9,10 @@ import dev.agalperin.database.models.CocktailDBO
 import dev.agalperin.network.ApiResponse
 import dev.agalperin.network.CocktailsApi
 import dev.agalperin.network.models.CocktailDTO
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.catch
@@ -29,10 +32,12 @@ class CocktailsRepository @Inject constructor(
 ) {
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    fun getAll(
+    suspend fun getAll(
         query: String,
         mergeStrategy: MergeStrategy<RequestResult<List<Cocktail>>> = RequestResponseMergeStrategy()
     ): Flow<RequestResult<List<Cocktail>>> {
+
+        database.cocktailDao.clean()
 
         val cachedAllArticles = getAllFromDatabase()
 

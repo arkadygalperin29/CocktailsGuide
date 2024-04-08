@@ -1,14 +1,19 @@
 package dev.agalperin.cocktails_main
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.SearchBar
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
@@ -26,16 +31,27 @@ import dev.agalperin.cocktails_main.components.CocktailSingleCard
 import dev.agalperin.cocktails_main.models.UiCocktailMain
 import dev.agalperin.uikit.components.AppLoader
 import dev.agalperin.uikit.scaffold.CocktailsScaffold
+import dev.agalperin.uikit.theme.Black1
 import dev.agalperin.uikit.theme.CocktailsGuideTheme
+import dev.agalperin.uikit.theme.Grey400
 
 class CocktailsMainScreen : Screen {
     @Composable
     override fun Content() {
 
         val viewModel: CocktailsMainViewModel = getViewModel()
+//        val cocktailuiState by viewModel.cocktailUiState.collectAsState()
+//
+//        LaunchedEffect(key1 = viewModel) {
+//            viewModel.fetchCocktails(cocktailuiState.searchQuery)
+//        }
 
         CocktailsScaffold { paddingValues ->
-            Column(modifier = Modifier.padding(paddingValues)) {
+            Column(
+                modifier = Modifier
+                    .padding(paddingValues)
+                    .background(color = Grey400)
+            ) {
                 CocktailMainScreen(viewModel = viewModel)
             }
         }
@@ -49,6 +65,10 @@ internal fun CocktailMainScreen(viewModel: CocktailsMainViewModel) {
     val currentState = state
 
     if (state != State.None) {
+        dev.agalperin.uikit.components.SearchBar(onSearch = { onSearch ->
+            viewModel.setSearchQuery(onSearch)
+        })
+        Spacer(modifier = Modifier.height(10.dp))
         CocktailsMainContent(currentState)
     }
 }
@@ -91,6 +111,7 @@ private fun Cocktails(
     ) cocktails: List<UiCocktailMain>
 ) {
     LazyColumn(
+        verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         items(cocktails) { cocktail ->
             key(cocktail.id) {

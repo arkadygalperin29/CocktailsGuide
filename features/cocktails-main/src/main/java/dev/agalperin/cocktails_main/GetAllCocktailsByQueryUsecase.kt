@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 class GetAllCocktailsByQueryUsecase @Inject constructor(private val repository: CocktailsRepository) {
 
-    internal operator fun invoke(query: String): Flow<RequestResult<List<UiCocktailMain>>> {
+    internal suspend operator fun invoke(query: String): Flow<RequestResult<List<UiCocktailMain>>> {
         return repository.getAll(query = query)
             .map { requestResult ->
                 requestResult.map { cocktails ->

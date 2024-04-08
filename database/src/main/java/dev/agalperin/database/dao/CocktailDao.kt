@@ -3,7 +3,9 @@ package dev.agalperin.database.dao
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import dev.agalperin.database.models.CocktailDBO
 import kotlinx.coroutines.flow.Flow
 
@@ -16,7 +18,7 @@ interface CocktailDao {
     @Query("SELECT * FROM cocktails")
     fun observeAll(): Flow<List<CocktailDBO>>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(list: List<CocktailDBO>)
 
     @Delete
@@ -24,4 +26,10 @@ interface CocktailDao {
 
     @Query("DELETE FROM cocktails")
     suspend fun clean()
+
+    @Transaction
+    suspend fun refreshAll(list: List<CocktailDBO>) {
+        remove(list)
+        getAll()
+    }
 }
