@@ -20,6 +20,8 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.hilt.getScreenModel
+import cafe.adriel.voyager.hilt.getViewModel
 import dev.agalperin.cocktails_main.components.CocktailSingleCard
 import dev.agalperin.cocktails_main.models.UiCocktailMain
 import dev.agalperin.uikit.components.AppLoader
@@ -29,9 +31,12 @@ import dev.agalperin.uikit.theme.CocktailsGuideTheme
 class CocktailsMainScreen : Screen {
     @Composable
     override fun Content() {
+
+        val viewModel: CocktailsMainViewModel = getViewModel()
+
         CocktailsScaffold { paddingValues ->
             Column(modifier = Modifier.padding(paddingValues)) {
-                CocktailMainScreen(viewModel = viewModel())
+                CocktailMainScreen(viewModel = viewModel)
             }
         }
     }
