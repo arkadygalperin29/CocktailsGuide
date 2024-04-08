@@ -22,7 +22,7 @@ android {
         }
 
 
-        buildConfigField("String", "COCKTAILS_API_KEY", "\"1\"")
+        buildConfigField("String", "COCKTAILS_API_KEY", "\"1/\"")
         buildConfigField("String", "COCKTAILS_API_BASE_URL", "\"https://www.thecocktaildb.com/api/json/v1/\"")
     }
 

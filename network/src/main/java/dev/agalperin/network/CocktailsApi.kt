@@ -6,7 +6,6 @@ import dev.agalperin.network.models.CocktailDTO
 import dev.agalperin.network.models.GlassDTO
 import dev.agalperin.network.models.IngredientDTO
 import dev.agalperin.network.models.IngredientDetailedDTO
-import dev.agalperin.network.utils.ApiKeyInterceptor
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
@@ -18,29 +17,29 @@ import retrofit2.http.Query
 
 interface CocktailsApi {
 
-    @GET("/search.php")
+    @GET("search.php")
     suspend fun getCocktailsByFirstLetter(@Query("f") letterSearch: String): Result<ApiResponse<CocktailDTO>>
 
-    @GET("/search.php")
+    @GET("search.php")
     suspend fun getIngredientByIngredientsName(@Query("i") ingredientNameSearch: String): IngredientsResponse<List<IngredientDetailedDTO>>
 
     //list all cocktails by first letter www.thecocktaildb.com/api/json/v1/1/search.php?f=a
-    @GET("/filter.php?a=Alcoholic")
+    @GET("filter.php?a=Alcoholic")
     suspend fun getCocktailsWithAlcohol(): ApiResponse<List<CocktailDTO>>
 
-    @GET("/filter.php?a=Non_Alcoholic")
+    @GET("filter.php?a=Non_Alcoholic")
     suspend fun getNonAlcoholicCocktails(): ApiResponse<List<CocktailDTO>>
 
-    @GET("/lookup.php")
+    @GET("lookup.php")
     suspend fun getCocktailById(@Query("i") cocktailId: String): ApiResponse<List<CocktailDTO>>
 
-    @GET("/list.php?g=list")
+    @GET("list.php?g=list")
     suspend fun getAllKindsOfGlasses(): ApiResponse<List<GlassDTO>>
 
-    @GET("/list.php?i=list")
+    @GET("list.php?i=list")
     suspend fun getIngredientsList(): ApiResponse<List<IngredientDTO>>
 
-    @GET("/lookup.php")
+    @GET("lookup.php")
     suspend fun getIngredientById(@Query("iid") ingredientId: String): IngredientsResponse<List<IngredientDetailedDTO>>
 }
 
@@ -48,17 +47,16 @@ interface CocktailsApi {
 fun CocktailsApi(
     baseUrl: String,
     okHttpClient: OkHttpClient? = null,
-    json: Json = Json,
+    json: Json = Json { ignoreUnknownKeys = true },
     apiKey: String
 ): CocktailsApi {
-    return retrofit(baseUrl, okHttpClient, json, apiKey).create(CocktailsApi::class.java)
+    return retrofit("$baseUrl$apiKey", okHttpClient, json).create(CocktailsApi::class.java)
 }
 
 private fun retrofit(
     baseUrl: String,
     okHttpClient: OkHttpClient?,
-    json: Json,
-    apiKey: String
+    json: Json
 ): Retrofit {
 
     val jsonConverterFactory =
@@ -70,7 +68,6 @@ private fun retrofit(
 
     val modifierOkhttpClient: OkHttpClient =
         (okHttpClient?.newBuilder() ?: OkHttpClient.Builder())
-            .addInterceptor(ApiKeyInterceptor(apiKey = apiKey))
             .addInterceptor(loggingInterceptor)
             .build()
 
