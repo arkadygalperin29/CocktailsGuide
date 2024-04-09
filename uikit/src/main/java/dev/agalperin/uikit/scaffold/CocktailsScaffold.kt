@@ -12,6 +12,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import dev.agalperin.uikit.scaffold.utils.AppBottomBarType
 import dev.agalperin.uikit.scaffold.utils.AppHeaderType
 import dev.agalperin.uikit.scaffold.bottomBar.CoctailBottomNavigation
@@ -21,11 +22,11 @@ import dev.agalperin.uikit.theme.Grey1000
 @Composable
 fun CocktailsScaffold(
     modifier: Modifier = Modifier,
-//    navController: NavController,
     topBarType: AppHeaderType? = AppHeaderType.WithBackButton(onReturnClick = { }),
     bottomBarType: AppBottomBarType = AppBottomBarType.Normal,
     contentColor: Color = LocalContentColor.current,
     containerColor: Color = Color.Transparent,
+    contentPadding: PaddingValues = PaddingValues(16.dp),
     content: @Composable (PaddingValues) -> Unit
 ) {
     Scaffold(
@@ -40,7 +41,6 @@ fun CocktailsScaffold(
                     is AppHeaderType.WithBackButton -> {
                         CoctailHeaderWithLogo(
                             logoAlignment = topBarType.logoAlignment,
-//                            navController = navController,
                             onReturnClick = topBarType.onReturnClick,
                             returnIcon = painterResource(id = topBarType.returnIconResId)
                         )
@@ -49,7 +49,6 @@ fun CocktailsScaffold(
                     is AppHeaderType.WithoutBackButton -> {
                         CoctailHeaderWithLogo(
                             logoAlignment = topBarType.logoAlignment,
-//                            navController = navController,
                             showFavoritesIcon = false,
                             onReturnClick = {}
                         )
@@ -67,8 +66,7 @@ fun CocktailsScaffold(
             when (bottomBarType) {
                 is AppBottomBarType.Normal -> {
                     CoctailBottomNavigation(
-                        modifier = Modifier.wrapContentHeight(),
-/*                        navController = navController*/
+                        modifier = Modifier.wrapContentHeight()
                     )
                 }
                 is AppBottomBarType.None -> {

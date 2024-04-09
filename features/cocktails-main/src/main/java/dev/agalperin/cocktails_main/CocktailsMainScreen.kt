@@ -10,10 +10,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.SearchBar
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import dev.agalperin.uikit.components.SearchBar
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
@@ -40,11 +40,6 @@ class CocktailsMainScreen : Screen {
     override fun Content() {
 
         val viewModel: CocktailsMainViewModel = getViewModel()
-//        val cocktailuiState by viewModel.cocktailUiState.collectAsState()
-//
-//        LaunchedEffect(key1 = viewModel) {
-//            viewModel.fetchCocktails(cocktailuiState.searchQuery)
-//        }
 
         CocktailsScaffold { paddingValues ->
             Column(
@@ -65,7 +60,7 @@ internal fun CocktailMainScreen(viewModel: CocktailsMainViewModel) {
     val currentState = state
 
     if (state != State.None) {
-        dev.agalperin.uikit.components.SearchBar(onSearch = { onSearch ->
+        SearchBar(onSearch = { onSearch ->
             viewModel.setSearchQuery(onSearch)
         })
         Spacer(modifier = Modifier.height(10.dp))
