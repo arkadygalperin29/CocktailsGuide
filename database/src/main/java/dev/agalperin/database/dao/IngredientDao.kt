@@ -7,6 +7,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import dev.agalperin.database.models.CocktailDBO
 import dev.agalperin.database.models.IngredientDBO
+import dev.agalperin.database.models.IngredientDetailedDBO
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -18,7 +19,13 @@ interface IngredientDao {
     fun observeAll(): Flow<List<IngredientDBO>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(list: List<IngredientDBO>)
+    suspend fun insertList(list: List<IngredientDBO>)
+
+    @Query("SELECT * FROM ingredients_detailed WHERE strIngredient = :name")
+    suspend fun getIngredientDetailed(name: String): IngredientDetailedDBO
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertSingle(ingredientDetailedDBO: IngredientDetailedDBO)
 
     @Delete
     suspend fun remove(list: List<IngredientDBO>)

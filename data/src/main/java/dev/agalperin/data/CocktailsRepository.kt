@@ -6,13 +6,10 @@ import dev.agalperin.data.utils.toCocktail
 import dev.agalperin.data.utils.toCocktailDBO
 import dev.agalperin.database.database.CocktailDatabase
 import dev.agalperin.database.models.CocktailDBO
-import dev.agalperin.network.ApiResponse
+import dev.agalperin.network.CocktailsResponse
 import dev.agalperin.network.CocktailsApi
 import dev.agalperin.network.models.CocktailDTO
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.catch
@@ -39,12 +36,12 @@ class CocktailsRepository @Inject constructor(
 
         database.cocktailDao.clean()
 
-        val cachedAllArticles = getAllFromDatabase()
+        val cachedAllCocktails = getAllFromDatabase()
 
-        val remoteArticles = getAllRemote(query)
+        val remoteAllCocktails = getAllRemote(query)
 
 
-        return cachedAllArticles.combine(remoteArticles, mergeStrategy::merge)
+        return cachedAllCocktails.combine(remoteAllCocktails, mergeStrategy::merge)
             .flatMapLatest { result ->
                 if (result is RequestResult.Success) {
                     database.cocktailDao.observeAll()
@@ -76,7 +73,7 @@ class CocktailsRepository @Inject constructor(
             }
             .map { it.toRequestResult() }
 
-        val start = flowOf<RequestResult<ApiResponse<CocktailDTO>>>(RequestResult.InProgress())
+        val start = flowOf<RequestResult<CocktailsResponse<CocktailDTO>>>(RequestResult.InProgress())
 
         return merge(start, apiRequest).map { result ->
             result.map { responseDTO ->

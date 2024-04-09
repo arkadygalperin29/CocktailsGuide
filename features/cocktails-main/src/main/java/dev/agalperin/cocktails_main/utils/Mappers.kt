@@ -2,7 +2,9 @@ package dev.agalperin.cocktails_main.utils
 
 import dev.agalperin.cocktails_main.models.UiCocktailDetails
 import dev.agalperin.cocktails_main.models.UiCocktailMain
+import dev.agalperin.cocktails_main.models.UiIngredientDetails
 import dev.agalperin.data.models.Cocktail
+import dev.agalperin.data.models.IngredientDetailed
 
 fun Cocktail.toUiCocktailMain(): UiCocktailMain {
     return UiCocktailMain(
@@ -56,5 +58,16 @@ fun Cocktail.toUiCocktailDetails(): UiCocktailDetails {
         strMeasure13 = strMeasure13,
         strMeasure14 = strMeasure14,
         strMeasure15 = strMeasure15,
+    )
+}
+
+fun IngredientDetailed.toUiIngredientDetails(): UiIngredientDetails {
+    return UiIngredientDetails(
+        id = id,
+        name = name,
+        description = description,
+        drinkType = drinkType,
+        isAlcoholic = isAlcoholic,
+        alcoholicVolume = alcoholicVolume
     )
 }

@@ -1,6 +1,6 @@
-package dev.agalperin.data.models
+package dev.agalperin.cocktails_main.models
 
-data class IngredientDetailed(
+data class UiIngredientDetails(
     val id: String = "1",
     val name: String? = null,
     val description: String? = null,

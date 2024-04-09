@@ -39,8 +39,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.hilt.getViewModel
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import coil.compose.AsyncImage
 import dev.agalperin.cocktails_main.R
+import dev.agalperin.cocktails_main.details.ingredient.IngredientDetailScreen
 import dev.agalperin.cocktails_main.models.UiCocktailDetails
 import dev.agalperin.uikit.scaffold.CocktailsScaffold
 import dev.agalperin.uikit.theme.Aubergine
@@ -94,6 +97,7 @@ fun CocktailDetail(
     cocktail: UiCocktailDetails
 ) {
     val scrollState = rememberScrollState()
+    val navigator = LocalNavigator.currentOrThrow
 
     Column(
         modifier = Modifier
@@ -231,7 +235,7 @@ fun CocktailDetail(
                                 (2.dp, color = Black1, RoundedCornerShape(8.dp))
                             .wrapContentSize()
                             .background(color = Cream, shape = RoundedCornerShape(8.dp))
-                            .clickable { TODO("Navigation to ingredient") }
+                            .clickable { navigator.push(IngredientDetailScreen(name)) }
                     ) {
                         Text(
                             text = name,
@@ -261,7 +265,7 @@ fun CocktailDetail(
                                 (2.dp, color = Black1, RoundedCornerShape(8.dp))
                             .wrapContentSize()
                             .background(color = RoseGold1, shape = RoundedCornerShape(8.dp))
-                            .clickable { TODO("Navigation to ingredient") }
+                            .clickable { navigator.push(IngredientDetailScreen(name)) }
                     ) {
                         Text(
                             text = name,
@@ -292,7 +296,7 @@ fun CocktailDetail(
                                 (2.dp, color = Black1, RoundedCornerShape(8.dp))
                             .wrapContentSize()
                             .background(color = Peach, shape = RoundedCornerShape(8.dp))
-                            .clickable { TODO("Navigation to ingredient") }
+                            .clickable { navigator.push(IngredientDetailScreen(name)) }
                     ) {
                         Text(
                             text = name,
@@ -323,7 +327,7 @@ fun CocktailDetail(
                                 (2.dp, color = Black1, RoundedCornerShape(8.dp))
                             .wrapContentSize()
                             .background(color = MintGreen, shape = RoundedCornerShape(8.dp))
-                            .clickable { TODO("Navigation to ingredient") }
+                            .clickable { navigator.push(IngredientDetailScreen(name)) }
                     ) {
                         Text(
                             text = name,
@@ -354,7 +358,7 @@ fun CocktailDetail(
                                 (2.dp, color = Black1, RoundedCornerShape(8.dp))
                             .wrapContentSize()
                             .background(color = PaleGray, shape = RoundedCornerShape(8.dp))
-                            .clickable { TODO("Navigation to ingredient") }
+                            .clickable { navigator.push(IngredientDetailScreen(name)) }
                     ) {
                         Text(
                             text = name,
@@ -385,7 +389,7 @@ fun CocktailDetail(
                                 (2.dp, color = Black1, RoundedCornerShape(8.dp))
                             .wrapContentSize()
                             .background(color = SealBrown, shape = RoundedCornerShape(8.dp))
-                            .clickable { TODO("Navigation to ingredient") }
+                            .clickable { navigator.push(IngredientDetailScreen(name)) }
                     ) {
                         Text(
                             text = name,
@@ -416,7 +420,7 @@ fun CocktailDetail(
                                 (2.dp, color = Black1, RoundedCornerShape(8.dp))
                             .wrapContentSize()
                             .background(color = Teal1, shape = RoundedCornerShape(8.dp))
-                            .clickable { TODO("Navigation to ingredient") }
+                            .clickable { navigator.push(IngredientDetailScreen(name)) }
                     ) {
                         Text(
                             text = name,
@@ -447,7 +451,7 @@ fun CocktailDetail(
                                 (2.dp, color = Black1, RoundedCornerShape(8.dp))
                             .wrapContentSize()
                             .background(color = CoolWhite, shape = RoundedCornerShape(8.dp))
-                            .clickable { TODO("Navigation to ingredient") }
+                            .clickable { navigator.push(IngredientDetailScreen(name)) }
                     ) {
                         Text(
                             text = name,
@@ -478,7 +482,7 @@ fun CocktailDetail(
                                 (2.dp, color = Black1, RoundedCornerShape(8.dp))
                             .wrapContentSize()
                             .background(color = Aubergine, shape = RoundedCornerShape(8.dp))
-                            .clickable { TODO("Navigation to ingredient") }
+                            .clickable { navigator.push(IngredientDetailScreen(name)) }
                     ) {
                         Text(
                             text = name,
@@ -509,7 +513,7 @@ fun CocktailDetail(
                                 (2.dp, color = Black1, RoundedCornerShape(8.dp))
                             .wrapContentSize()
                             .background(color = MiddleGreen, shape = RoundedCornerShape(8.dp))
-                            .clickable { TODO("Navigation to ingredient") }
+                            .clickable { navigator.push(IngredientDetailScreen(name)) }
                     ) {
                         Text(
                             text = name,
@@ -540,7 +544,7 @@ fun CocktailDetail(
                                 (2.dp, color = Black1, RoundedCornerShape(8.dp))
                             .wrapContentSize()
                             .background(color = TerraCotta, shape = RoundedCornerShape(8.dp))
-                            .clickable { TODO("Navigation to ingredient") }
+                            .clickable { navigator.push(IngredientDetailScreen(name)) }
                     ) {
                         Text(
                             text = name,
@@ -571,7 +575,7 @@ fun CocktailDetail(
                                 (2.dp, color = Black1, RoundedCornerShape(8.dp))
                             .wrapContentSize()
                             .background(color = SoftBlueGray, shape = RoundedCornerShape(8.dp))
-                            .clickable { TODO("Navigation to ingredient") }
+                            .clickable { navigator.push(IngredientDetailScreen(name)) }
                     ) {
                         Text(
                             text = name,
@@ -602,7 +606,7 @@ fun CocktailDetail(
                                 (2.dp, color = Black1, RoundedCornerShape(8.dp))
                             .wrapContentSize()
                             .background(color = PeriWinkle1, shape = RoundedCornerShape(8.dp))
-                            .clickable { TODO("Navigation to ingredient") }
+                            .clickable { navigator.push(IngredientDetailScreen(name)) }
                     ) {
                         Text(
                             text = name,
@@ -633,7 +637,7 @@ fun CocktailDetail(
                                 (2.dp, color = Black1, RoundedCornerShape(8.dp))
                             .wrapContentSize()
                             .background(color = SkyBlue, shape = RoundedCornerShape(8.dp))
-                            .clickable { TODO("Navigation to ingredient") }
+                            .clickable { navigator.push(IngredientDetailScreen(name)) }
                     ) {
                         Text(
                             text = name,
@@ -664,7 +668,7 @@ fun CocktailDetail(
                                 (2.dp, color = Black1, RoundedCornerShape(8.dp))
                             .wrapContentSize()
                             .background(color = SkyBlue, shape = RoundedCornerShape(8.dp))
-                            .clickable { TODO("Navigation to ingredient by name") }
+                            .clickable { navigator.push(IngredientDetailScreen(name)) }
                     ) {
                         Text(
                             text = name,
