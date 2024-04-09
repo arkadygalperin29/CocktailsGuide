@@ -1,0 +1,9 @@
+<resources>
+    <string name="type">Type: %1$s</string>
+    <string name="category">Category: %1$s</string>
+    <string name="glass">Glass: %1$s</string>
+    <string name="instructions">Instructions: %1$s</string>
+    <string name="tags">Tags: %1$s</string>
+    <string name="watch_video">Watch how to mix</string>
+    <string name="ingredients">"Ingredients: "</string>
+</resources>

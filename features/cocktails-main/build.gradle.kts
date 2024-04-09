@@ -69,4 +69,5 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":uikit"))
     implementation(project(":navigation"))
+    implementation(project(":core"))
 }

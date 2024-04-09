@@ -21,6 +21,9 @@ interface CocktailDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(list: List<CocktailDBO>)
 
+    @Query("SELECT * FROM cocktails WHERE id = :id")
+    suspend fun getCoctailById(id: String): CocktailDBO
+
     @Delete
     suspend fun remove(list: List<CocktailDBO>)
 

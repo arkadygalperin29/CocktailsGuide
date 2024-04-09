@@ -68,7 +68,10 @@ class CocktailsRepository @Inject constructor(
         }
             .onEach { result ->
                 if (result.isFailure) {
-                    logger.e(LOG_TAG, "Error getting from server. Cause: ${result.exceptionOrNull()}")
+                    logger.e(
+                        LOG_TAG,
+                        "Error getting from server. Cause: ${result.exceptionOrNull()}"
+                    )
                 }
             }
             .map { it.toRequestResult() }
@@ -105,6 +108,7 @@ class CocktailsRepository @Inject constructor(
             }
         }
     }
+
     private companion object {
         const val LOG_TAG = "CocktailsRepository"
     }
@@ -116,5 +120,9 @@ class CocktailsRepository @Inject constructor(
 
     fun fetchLatest(query: String): Flow<RequestResult<List<Cocktail>>> {
         return getAllRemote(query)
+    }
+
+    suspend fun getCocktailById(id: String): Cocktail {
+        return database.cocktailDao.getCoctailById(id).toCocktail()
     }
 }

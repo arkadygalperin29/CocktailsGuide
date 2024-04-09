@@ -27,7 +27,10 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.hilt.getScreenModel
 import cafe.adriel.voyager.hilt.getViewModel
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import dev.agalperin.cocktails_main.components.CocktailSingleCard
+import dev.agalperin.cocktails_main.details.CocktailsDetailScreen
 import dev.agalperin.cocktails_main.models.UiCocktailMain
 import dev.agalperin.uikit.components.AppLoader
 import dev.agalperin.uikit.scaffold.CocktailsScaffold
@@ -105,12 +108,18 @@ private fun Cocktails(
         limit = 1
     ) cocktails: List<UiCocktailMain>
 ) {
+    val navigator = LocalNavigator.currentOrThrow
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         items(cocktails) { cocktail ->
             key(cocktail.id) {
-                CocktailSingleCard(cocktail = cocktail, onCocktailClicked = {})
+                CocktailSingleCard(
+                    cocktail = cocktail,
+                    onCocktailClicked = {
+                        navigator.push(CocktailsDetailScreen(id = cocktail.id))
+                    }
+                )
             }
         }
     }
