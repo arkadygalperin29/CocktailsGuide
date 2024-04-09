@@ -4,17 +4,13 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import dev.agalperin.uikit.components.SearchBar
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -25,21 +21,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import cafe.adriel.voyager.core.screen.Screen
-import cafe.adriel.voyager.hilt.getScreenModel
 import cafe.adriel.voyager.hilt.getViewModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import dev.agalperin.cocktails_main.components.CocktailSingleCard
-import dev.agalperin.cocktails_main.details.CocktailsDetailScreen
+import dev.agalperin.cocktails_main.details.cocktail.CocktailsDetailScreen
 import dev.agalperin.cocktails_main.models.UiCocktailMain
 import dev.agalperin.uikit.components.AppLoader
 import dev.agalperin.uikit.scaffold.CocktailsScaffold
-import dev.agalperin.uikit.theme.Black1
 import dev.agalperin.uikit.theme.CocktailsGuideTheme
-import dev.agalperin.uikit.theme.Grey400
-import dev.agalperin.uikit.theme.PeriWinkle1
 import dev.agalperin.uikit.theme.Pink40
 
 class CocktailsMainScreen : Screen {

@@ -1,4 +1,4 @@
-package dev.agalperin.cocktails_main.details
+package dev.agalperin.cocktails_main.details.cocktail
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -40,8 +40,6 @@ import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.hilt.getViewModel
 import coil.compose.AsyncImage
-import dev.agalperin.cocktails_main.CocktailMainScreen
-import dev.agalperin.cocktails_main.CocktailsMainViewModel
 import dev.agalperin.cocktails_main.R
 import dev.agalperin.cocktails_main.models.UiCocktailDetails
 import dev.agalperin.uikit.scaffold.CocktailsScaffold
@@ -49,7 +47,6 @@ import dev.agalperin.uikit.theme.Aubergine
 import dev.agalperin.uikit.theme.Black1
 import dev.agalperin.uikit.theme.CoolWhite
 import dev.agalperin.uikit.theme.Cream
-import dev.agalperin.uikit.theme.Grey400
 import dev.agalperin.uikit.theme.Grey50
 import dev.agalperin.uikit.theme.Header1
 import dev.agalperin.uikit.theme.MiddleGreen

@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class IngredientDetailedDTO(
     @SerialName("idIngredient")
-    val id: String? = null,
+    val id: String,
     @SerialName("strIngredient")
     val name: String? = null,
     @SerialName("strDescription")

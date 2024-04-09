@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class IngredientsResponse<T: Any>(
+data class IngredientsResponse<E>(
     @SerialName("ingredients")
-    val data: T?
+    val ingredients: List<E>
 )

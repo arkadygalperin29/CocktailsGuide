@@ -1,4 +1,4 @@
-package dev.agalperin.cocktails_main.details
+package dev.agalperin.cocktails_main.details.cocktail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

@@ -1,8 +1,14 @@
 package dev.agalperin.data.utils
 
 import dev.agalperin.data.models.Cocktail
+import dev.agalperin.data.models.Ingredient
+import dev.agalperin.data.models.IngredientDetailed
 import dev.agalperin.database.models.CocktailDBO
+import dev.agalperin.database.models.IngredientDBO
+import dev.agalperin.database.models.IngredientDetailedDBO
 import dev.agalperin.network.models.CocktailDTO
+import dev.agalperin.network.models.IngredientDTO
+import dev.agalperin.network.models.IngredientDetailedDTO
 
 internal fun CocktailDBO.toCocktail(): Cocktail {
     return Cocktail(
@@ -136,3 +142,51 @@ internal fun CocktailDTO.toCocktailDBO(): CocktailDBO {
         strMeasure15 = strMeasure15,
     )
 }
+
+internal fun IngredientDTO.toIngredientDBO(): IngredientDBO {
+    return IngredientDBO(
+        ingredientName = ingredientName
+    )
+}
+
+internal fun IngredientDTO.toIngredient(): Ingredient {
+    return Ingredient(
+        ingredientName = ingredientName
+    )
+}
+internal fun IngredientDBO.toIngredient(): Ingredient {
+    return Ingredient(
+        ingredientName = ingredientName
+    )
+}
+internal fun IngredientDetailedDTO.toIngredientDetailedDBO(): IngredientDetailedDBO {
+    return IngredientDetailedDBO(
+        id = id,
+        name = name,
+        description = description,
+        drinkType = drinkType,
+        isAlcoholic = isAlcoholic,
+        alcoholicVolume = alcoholicVolume
+    )
+}
+internal fun IngredientDetailedDTO.toIngredientDetailed(): IngredientDetailed {
+    return IngredientDetailed(
+        id = id,
+        name = name,
+        description = description,
+        drinkType = drinkType,
+        isAlcoholic = isAlcoholic,
+        alcoholicVolume = alcoholicVolume
+    )
+}
+internal fun IngredientDetailedDBO.toIngredientDetailed(): IngredientDetailed {
+    return IngredientDetailed(
+        id = id,
+        name = name,
+        description = description,
+        drinkType = drinkType,
+        isAlcoholic = isAlcoholic,
+        alcoholicVolume = alcoholicVolume
+    )
+}
+

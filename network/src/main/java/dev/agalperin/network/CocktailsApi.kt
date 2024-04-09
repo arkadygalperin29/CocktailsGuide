@@ -21,26 +21,26 @@ interface CocktailsApi {
     suspend fun getCocktailsByFirstLetter(@Query("f") letterSearch: String): Result<ApiResponse<CocktailDTO>>
 
     @GET("search.php")
-    suspend fun getIngredientByIngredientsName(@Query("i") ingredientNameSearch: String): IngredientsResponse<List<IngredientDetailedDTO>>
+    suspend fun getIngredientByIngredientsName(@Query("i") ingredientNameSearch: String): IngredientsResponse<IngredientDetailedDTO>
 
     //list all cocktails by first letter www.thecocktaildb.com/api/json/v1/1/search.php?f=a
     @GET("filter.php?a=Alcoholic")
-    suspend fun getCocktailsWithAlcohol(): ApiResponse<List<CocktailDTO>>
+    suspend fun getCocktailsWithAlcohol(): ApiResponse<CocktailDTO>
 
     @GET("filter.php?a=Non_Alcoholic")
-    suspend fun getNonAlcoholicCocktails(): ApiResponse<List<CocktailDTO>>
+    suspend fun getNonAlcoholicCocktails(): ApiResponse<CocktailDTO>
 
     @GET("lookup.php")
-    suspend fun getCocktailById(@Query("i") cocktailId: String): ApiResponse<List<CocktailDTO>>
+    suspend fun getCocktailById(@Query("i") cocktailId: String): ApiResponse<CocktailDTO>
 
     @GET("list.php?g=list")
-    suspend fun getAllKindsOfGlasses(): ApiResponse<List<GlassDTO>>
+    suspend fun getAllKindsOfGlasses(): ApiResponse<GlassDTO>
 
     @GET("list.php?i=list")
-    suspend fun getIngredientsList(): ApiResponse<List<IngredientDTO>>
+    suspend fun getIngredientsList(): ApiResponse<IngredientDTO>
 
     @GET("lookup.php")
-    suspend fun getIngredientById(@Query("iid") ingredientId: String): IngredientsResponse<List<IngredientDetailedDTO>>
+    suspend fun getIngredientById(@Query("iid") ingredientId: String): IngredientsResponse<IngredientDetailedDTO>
 }
 
 
