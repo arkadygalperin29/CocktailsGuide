@@ -72,6 +72,7 @@ data class CocktailsDetailScreen(val id: String): Screen {
         val viewModel: CocktailDetailViewModel = getViewModel()
         val cocktailDetail by viewModel.cocktailDetailed.collectAsState()
 
+        //To remove LaunchEffect and work around init when hilt will support @AssistedInject better
         LaunchedEffect(key1 = viewModel) {
             viewModel.getCocktailById(id)
         }
@@ -119,85 +120,73 @@ fun CocktailDetail(
             )
         }
         if (!cocktail.name.isNullOrEmpty()) {
-            cocktail.name?.let {
-                Text(
-                    text = it,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 16.dp),
-                    textAlign = TextAlign.Center,
-                    style = Header1,
-                    color = Grey50
-                )
-            }
+            Text(
+                text = cocktail.name,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 16.dp),
+                textAlign = TextAlign.Center,
+                style = Header1,
+                color = Grey50
+            )
         }
         if (!cocktail.alcoholic.isNullOrEmpty()) {
-            cocktail.alcoholic?.let {
-                Text(
-                    text = stringResource(R.string.type, it),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                    style = Text14,
-                    color = Grey50
-                )
-            }
+            Text(
+                text = stringResource(R.string.type, cocktail.alcoholic),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                style = Text14,
+                color = Grey50
+            )
         }
         if (!cocktail.category.isNullOrEmpty()) {
-            cocktail.category?.let {
-                Text(
-                    text = stringResource(R.string.category, it),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                    style = Text14,
-                    color = Grey50
-                )
-            }
+            Text(
+                text = stringResource(R.string.category, cocktail.category),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                style = Text14,
+                color = Grey50
+            )
         }
         if (!cocktail.glass.isNullOrEmpty()) {
-            cocktail.glass?.let {
-                Text(
-                    text = stringResource(R.string.glass, it),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                    style = Text14,
-                    color = Grey50
-                )
-            }
+            Text(
+                text = stringResource(R.string.glass, cocktail.glass),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                style = Text14,
+                color = Grey50
+            )
         }
         if (!cocktail.instructions.isNullOrEmpty()) {
-            cocktail.instructions?.let {
-                Text(
-                    text = stringResource(R.string.instructions, it),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                    style = Text14,
-                    color = Grey50
-                )
-            }
+            Text(
+                text = stringResource(R.string.instructions, cocktail.instructions),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                style = Text14,
+                color = Grey50
+            )
         }
         if (!cocktail.tags.isNullOrEmpty()) {
-            cocktail.tags?.let {
-                Text(
-                    text = stringResource(R.string.tags, it),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                    style = Text14,
-                    color = Grey50
-                )
-            }
+            Text(
+                text = stringResource(R.string.tags, cocktail.tags),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                style = Text14,
+                color = Grey50
+            )
         }
         if (!cocktail.videoLink.isNullOrEmpty()) {
-            cocktail.videoLink?.let {
+            cocktail.videoLink.let {
                 val link = stringResource(id = R.string.watch_video)
                 val videoLinkAnnotated = buildAnnotatedString {
                     withAnnotation(
                         tag = "URL",
-                        annotation = cocktail.videoLink ?: ""
+                        annotation = cocktail.videoLink
                     ) {
                         withStyle(
                             style = SpanStyle(
@@ -262,7 +251,7 @@ fun CocktailDetail(
             }
         }
         if (!cocktail.strIngredient2.isNullOrEmpty()) {
-            cocktail.strIngredient2?.let { name ->
+            cocktail.strIngredient2.let { name ->
                 Row {
                     Box(
                         modifier = Modifier
@@ -293,7 +282,7 @@ fun CocktailDetail(
             }
         }
         if (!cocktail.strIngredient3.isNullOrEmpty()) {
-            cocktail.strIngredient3?.let { name ->
+            cocktail.strIngredient3.let { name ->
                 Row {
                     Box(
                         modifier = Modifier
@@ -324,7 +313,7 @@ fun CocktailDetail(
             }
         }
         if (!cocktail.strIngredient4.isNullOrEmpty()) {
-            cocktail.strIngredient4?.let { name ->
+            cocktail.strIngredient4.let { name ->
                 Row {
                     Box(
                         modifier = Modifier
@@ -355,7 +344,7 @@ fun CocktailDetail(
             }
         }
         if (!cocktail.strIngredient5.isNullOrEmpty()) {
-            cocktail.strIngredient5?.let { name ->
+            cocktail.strIngredient5.let { name ->
                 Row {
                     Box(
                         modifier = Modifier
@@ -386,7 +375,7 @@ fun CocktailDetail(
             }
         }
         if (!cocktail.strIngredient6.isNullOrEmpty()) {
-            cocktail.strIngredient6?.let { name ->
+            cocktail.strIngredient6.let { name ->
                 Row {
                     Box(
                         modifier = Modifier
@@ -417,7 +406,7 @@ fun CocktailDetail(
             }
         }
         if (!cocktail.strIngredient7.isNullOrEmpty()) {
-            cocktail.strIngredient7?.let { name ->
+            cocktail.strIngredient7.let { name ->
                 Row {
                     Box(
                         modifier = Modifier
@@ -448,7 +437,7 @@ fun CocktailDetail(
             }
         }
         if (!cocktail.strIngredient8.isNullOrEmpty()) {
-            cocktail.strIngredient8?.let { name ->
+            cocktail.strIngredient8.let { name ->
                 Row {
                     Box(
                         modifier = Modifier
@@ -479,7 +468,7 @@ fun CocktailDetail(
             }
         }
         if (!cocktail.strIngredient9.isNullOrEmpty()) {
-            cocktail.strIngredient9?.let { name ->
+            cocktail.strIngredient9.let { name ->
                 Row {
                     Box(
                         modifier = Modifier
@@ -510,7 +499,7 @@ fun CocktailDetail(
             }
         }
         if (!cocktail.strIngredient10.isNullOrEmpty()) {
-            cocktail.strIngredient10?.let { name ->
+            cocktail.strIngredient10.let { name ->
                 Row {
                     Box(
                         modifier = Modifier
@@ -541,7 +530,7 @@ fun CocktailDetail(
             }
         }
         if (!cocktail.strIngredient11.isNullOrEmpty()) {
-            cocktail.strIngredient11?.let { name ->
+            cocktail.strIngredient11.let { name ->
                 Row {
                     Box(
                         modifier = Modifier
@@ -572,7 +561,7 @@ fun CocktailDetail(
             }
         }
         if (!cocktail.strIngredient12.isNullOrEmpty()) {
-            cocktail.strIngredient12?.let { name ->
+            cocktail.strIngredient12.let { name ->
                 Row {
                     Box(
                         modifier = Modifier
@@ -603,7 +592,7 @@ fun CocktailDetail(
             }
         }
         if (!cocktail.strIngredient13.isNullOrEmpty()) {
-            cocktail.strIngredient13?.let { name ->
+            cocktail.strIngredient13.let { name ->
                 Row {
                     Box(
                         modifier = Modifier
@@ -634,7 +623,7 @@ fun CocktailDetail(
             }
         }
         if (!cocktail.strIngredient14.isNullOrEmpty()) {
-            cocktail.strIngredient14?.let { name ->
+            cocktail.strIngredient14.let { name ->
                 Row {
                     Box(
                         modifier = Modifier
@@ -665,7 +654,7 @@ fun CocktailDetail(
             }
         }
         if (!cocktail.strIngredient15.isNullOrEmpty()) {
-            cocktail.strIngredient15?.let { name ->
+            cocktail.strIngredient15.let { name ->
                 Row {
                     Box(
                         modifier = Modifier
