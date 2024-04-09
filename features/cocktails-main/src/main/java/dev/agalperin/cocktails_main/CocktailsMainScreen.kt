@@ -5,8 +5,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -37,6 +39,8 @@ import dev.agalperin.uikit.scaffold.CocktailsScaffold
 import dev.agalperin.uikit.theme.Black1
 import dev.agalperin.uikit.theme.CocktailsGuideTheme
 import dev.agalperin.uikit.theme.Grey400
+import dev.agalperin.uikit.theme.PeriWinkle1
+import dev.agalperin.uikit.theme.Pink40
 
 class CocktailsMainScreen : Screen {
     @Composable
@@ -44,11 +48,13 @@ class CocktailsMainScreen : Screen {
 
         val viewModel: CocktailsMainViewModel = getViewModel()
 
-        CocktailsScaffold { paddingValues ->
+        CocktailsScaffold(
+            containerColor = Pink40
+        ) { paddingValues ->
             Column(
                 modifier = Modifier
                     .padding(paddingValues)
-                    .background(color = Grey400)
+                    .background(color = Pink40)
             ) {
                 CocktailMainScreen(viewModel = viewModel)
             }
@@ -66,7 +72,6 @@ internal fun CocktailMainScreen(viewModel: CocktailsMainViewModel) {
         SearchBar(onSearch = { onSearch ->
             viewModel.setSearchQuery(onSearch)
         })
-        Spacer(modifier = Modifier.height(10.dp))
         CocktailsMainContent(currentState)
     }
 }
@@ -110,6 +115,9 @@ private fun Cocktails(
 ) {
     val navigator = LocalNavigator.currentOrThrow
     LazyColumn(
+        modifier = Modifier
+            .background(color = Pink40)
+            .offset(y = (16.dp)),
         verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         items(cocktails) { cocktail ->

@@ -17,9 +17,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.agalperin.uikit.components.AppNavigationBarItem
 import dev.agalperin.uikit.theme.Black1
+import dev.agalperin.uikit.theme.CocktailsGuideTheme
 import dev.agalperin.uikit.theme.Grey400
 import dev.agalperin.uikit.utils.customShadow
 
@@ -103,5 +105,15 @@ fun CoctailBottomNavigation(
                 }
             }
         }
+    }
+}
+
+
+
+@Preview
+@Composable
+fun CocktailBottomNavigationPreview() {
+    CocktailsGuideTheme {
+        CoctailBottomNavigation()
     }
 }

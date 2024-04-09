@@ -21,7 +21,6 @@ import dev.agalperin.uikit.theme.Grey1000
 
 @Composable
 fun CocktailsScaffold(
-    modifier: Modifier = Modifier,
     topBarType: AppHeaderType? = AppHeaderType.WithBackButton(onReturnClick = { }),
     bottomBarType: AppBottomBarType = AppBottomBarType.Normal,
     contentColor: Color = LocalContentColor.current,
@@ -30,11 +29,7 @@ fun CocktailsScaffold(
     content: @Composable (PaddingValues) -> Unit
 ) {
     Scaffold(
-        modifier = modifier.then(
-            Modifier
-                .systemBarsPadding()
-                .imePadding()
-        ),
+        modifier = Modifier.systemBarsPadding().imePadding(),
         topBar = {
             CompositionLocalProvider(LocalContentColor provides Grey1000) {
                 when (topBarType) {
@@ -80,3 +75,4 @@ fun CocktailsScaffold(
         content(it)
     }
 }
+

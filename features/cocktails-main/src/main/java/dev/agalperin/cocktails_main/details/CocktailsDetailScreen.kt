@@ -6,9 +6,11 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
@@ -80,6 +82,7 @@ data class CocktailsDetailScreen(val id: String): Screen {
         CocktailsScaffold { paddingValues ->
             Column(
                 modifier = Modifier
+                    .background(color = Pink40)
                     .padding(paddingValues)
             ) {
                 CocktailDetail(cocktail = cocktailDetail)
@@ -99,6 +102,7 @@ fun CocktailDetail(
         modifier = Modifier
             .fillMaxSize()
             .background(color = Pink40)
+            .offset(y = 16.dp)
             .verticalScroll(state = scrollState)
     ) {
         Box(
@@ -684,6 +688,7 @@ fun CocktailDetail(
                 }
             }
         }
+        Spacer(modifier = Modifier.height(4.dp))
     }
 }
 
