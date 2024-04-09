@@ -8,4 +8,4 @@ Navigation is Voyager with hilt plugin. Planning to write tests later, at least 
 
 Currently WIP, most recent update may be in one of feature branches.
 
-Stack: Compose, Voyager, Room, Retrofit, Dagger-Hilt, Coroutines, MVVM, modularization, JUnit, Mockk, detekt
+Stack: Compose, Voyager, Room, Retrofit, Kotlin-Serialization, Dagger-Hilt, Coroutines, MVVM, modularization, JUnit, Mockk, detekt
