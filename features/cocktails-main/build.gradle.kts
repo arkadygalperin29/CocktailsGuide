@@ -79,17 +79,15 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     // Mockito
-    testImplementation("org.mockito:mockito-core:3.12.4")
-    androidTestImplementation("org.mockito:mockito-android:3.12.4")
+    testImplementation(libs.mockito.core)
+    androidTestImplementation(libs.mockito.android)
 
     //Mockk
-    testImplementation ("io.mockk:mockk:1.13.10")
-    androidTestImplementation ("io.mockk:mockk-android:1.13.10")
+    testImplementation (libs.mockk)
+    androidTestImplementation (libs.mockk.android)
 
 
-    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0")
-    androidTestImplementation("org.mockito:mockito-inline:3.12.4")
-    testImplementation ("org.mockito:mockito-inline:3.12.4")
+    testImplementation (libs.kotlinx.coroutines.test)
 
     implementation(project(":data"))
     implementation(project(":uikit"))

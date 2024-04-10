@@ -39,7 +39,6 @@ class IngredientsRepository @Inject constructor(
 
     @OptIn(ExperimentalCoroutinesApi::class)
     suspend fun getAll(
-        query: String,
         mergeStrategy: MergeStrategy<RequestResult<List<Ingredient>>> = RequestResponseMergeStrategy()
     ): Flow<RequestResult<List<Ingredient>>> {
 
