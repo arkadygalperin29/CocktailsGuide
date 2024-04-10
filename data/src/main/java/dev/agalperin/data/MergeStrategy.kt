@@ -8,7 +8,7 @@ interface MergeStrategy<E> {
 
 }
 
-internal class RequestResponseMergeStrategy<T : Any> : MergeStrategy<RequestResult<T>> {
+class RequestResponseMergeStrategy<T : Any> : MergeStrategy<RequestResult<T>> {
     override fun merge(right: RequestResult<T>, left: RequestResult<T>): RequestResult<T> {
         return when {
             right is InProgress && left is InProgress -> merge(right, left)

@@ -15,6 +15,11 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
+//
+//    sourceSets {
+//        main.java.srcDirs += 'src/main/kotlin'
+//        test.java.srcDirs += 'src/test/kotlin'
+//    }
 
     buildTypes {
         debug {
@@ -76,8 +81,12 @@ dependencies {
     // Mockito
     testImplementation("org.mockito:mockito-core:3.12.4")
     androidTestImplementation("org.mockito:mockito-android:3.12.4")
+
+    //Mockk
     testImplementation ("io.mockk:mockk:1.13.10")
     androidTestImplementation ("io.mockk:mockk-android:1.13.10")
+
+
     testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0")
     androidTestImplementation("org.mockito:mockito-inline:3.12.4")
     testImplementation ("org.mockito:mockito-inline:3.12.4")
